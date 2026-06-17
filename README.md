@@ -1,40 +1,20 @@
 # 🚀 ITT440 Docker Project
 
-## ✅ Completed
+## Project Progress
 
-- Ubuntu Setup
-- Docker Installation
-- MySQL Container
-- Database Creation
+### ✅ Completed
 
----
+- [x] Ubuntu Setup
+- [x] Docker Installation
+- [x] MySQL Container
+- [x] Database Creation
 
-## 🔄 Pending
+### ⏳ Pending
 
-- Python Servers
-- C Servers
-- Python Clients
-- C Clients
-
----
-
-## 📌 Project Status
-
-Current progress:
-
-```text
-[████░░░░░░] 40%
-```
-
-Infrastructure and database setup have been completed.
-
-Remaining tasks involve the development of:
-- Python Server Containers
-- C Server Containers
-- Python Client Containers
-- C Client Containers
-
----
+- [ ] Python Servers
+- [ ] C Servers
+- [ ] Python Clients
+- [ ] C Clients
 
 ## 👥 Team Collaboration
 
