@@ -1,9 +1,5 @@
-
-*.pyc
-
+venv/
+pyserver2/venv/
 __pycache__/
-
-*.o
-
-*.out
+*.pyc
 
