@@ -11,9 +11,9 @@
 
 ### ⏳ Pending
 
-- [ ] Python Servers
+- [x] Python Servers
 - [ ] C Servers
-- [ ] Python Clients
+- [x] Python Clients
 - [ ] C Clients
 
 ## 👥 Team Collaboration
