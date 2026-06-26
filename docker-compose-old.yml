@@ -1,0 +1,27 @@
+services:
+
+  # The MySQL Database Service
+
+  db:
+
+    image: mysql:8.0
+
+    container_name: mysql_database
+
+    restart: always
+
+    environment:
+
+      MYSQL_ROOT_PASSWORD: root123
+
+      MYSQL_DATABASE: assignment_db
+
+    ports:
+
+      - "3306:3306"
+
+    volumes:
+
+      # This links your mysql folder to the container's initialization folder
+
+      - ./mysql:/docker-entrypoint-initdb.d

@@ -1,48 +1,46 @@
-nano pyserver2/test_db.py
-
-
-nano pyserver2/test_db.pyimport socket
+import socket
 import pymysql
+import time
 
 HOST = "0.0.0.0"
 PORT = 5000
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 server.bind((HOST, PORT))
 server.listen()
 
-print("Python Server Running on Port 5000")
+print("Python Server Running on Port 5000...")
 
 while True:
-    conn, addr = server.accept()
-
     try:
+        conn, addr = server.accept()
+        
         db = pymysql.connect(
-        host="db",
-        user="root",
-        password="root123",
-        database="assignment_db",
-        port=3306
-
+            host="mysql_database",
+            user="root",
+            password="root123",
+            database="assignment_db",
+            port=3306
         )
 
         cursor = db.cursor()
+        
+        cursor.execute("UPDATE score_table SET points = points + 1, datetime_stamp = NOW() WHERE user = 'pyserver2'")
+        db.commit()
 
-        cursor.execute("""
-            SELECT points, datetime_stamp
-            FROM score_table
-            WHERE user='python_user'
-        """)
-
+        cursor.execute("SELECT points, datetime_stamp FROM score_table WHERE user = 'pyserver2'")
         result = cursor.fetchone()
 
-        message = f"Points: {result[0]} | Updated: {result[1]}"
+        if result:
+            message = f"Points: {result[0]} | Updated: {result[1]}"
+        else:
+            message = "User pyserver2 not found"
 
         conn.send(message.encode())
-
         db.close()
+        conn.close()
 
     except Exception as e:
-        conn.send(str(e).encode())
-
-    conn.close()
+        print(f"Error encountered: {e}")
+        time.sleep(2)
